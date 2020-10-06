@@ -1,24 +1,33 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Intro from './components/Intro';
+import Interests from './components/Interests';
+import Picture from './components/Picture';
+import Skills from './components/Skills';
+import Links from './components/Links';
+import Counter from './components/Counter';
+import ScrollToTop from './components/ScrollToTop';
+import Footer from './components/Footer';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+      <Intro />
+      <Interests />
+      <p>Here is a random image from unsplash</p>
+      <Picture />
+      <Skills />
+      <Links />
+      <p>
+        Here is a little counter to play with()
+      </p>
+      <Counter />
+      <ScrollToTop />
+      <Footer />
+
+
+
     </div>
   );
 }
