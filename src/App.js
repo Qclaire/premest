@@ -6,6 +6,7 @@ import Interests from './components/Interests';
 import Picture from './components/Picture';
 import Skills from './components/Skills';
 import Links from './components/Links';
+import Counter from './components/Counter';
 
 function App() {
   return (
@@ -17,6 +18,10 @@ function App() {
       <Picture />
       <Skills />
       <Links />
+      <p>
+        Here is a little counter to play with
+      </p>
+      <Counter />
 
     </div>
   );
