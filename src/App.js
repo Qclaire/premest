@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Intro from './components/Intro';
 import Interests from './components/Interests';
@@ -7,6 +6,8 @@ import Picture from './components/Picture';
 import Skills from './components/Skills';
 import Links from './components/Links';
 import Counter from './components/Counter';
+import ScrollToTop from './components/ScrollToTop';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -19,9 +20,13 @@ function App() {
       <Skills />
       <Links />
       <p>
-        Here is a little counter to play with
+        Here is a little counter to play with()
       </p>
       <Counter />
+      <ScrollToTop />
+      <Footer />
+
+
 
     </div>
   );
