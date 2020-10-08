@@ -2,11 +2,11 @@ import React from 'react'
 
 const styles = {
     top: {
-        fontSize: "50px",
+        fontSize: "30px",
         fontWeight: "200",
     },
     bottom: {
-        fontSize: "14px",
+        fontSize: "10px",
         fontWeight: "300",
         letterSpacing: "4px"
     }

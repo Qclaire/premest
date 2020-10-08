@@ -6,14 +6,14 @@ const styles = {
         padding: "20px",
     },
     bigText: {
-        fontSize: "50px",
-        fontWeight: "250",
+        fontSize: "40px",
+        fontWeight: "200",
     },
     secondBiggText: {
         fontSize: "25px",
     },
     smallText: {
-        fontSize: "20px",
+        fontSize: "18px",
         fontWeight: "200",
         float: "right"
     }
