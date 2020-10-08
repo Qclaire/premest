@@ -26,6 +26,7 @@ const styles = {
     middleLayer: {
         border: "solid #545454 15px",
         borderRadius: "25px",
+        maxWidth: "700px",
         width: "70%",
         margin: "auto",
         position: "absolute",
@@ -98,6 +99,15 @@ const styles = {
     }
 
 }
+
+const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+const date = new Date();
+const hr = date.getHours();
+const time = `${hr > 12 ? hr - 12 : hr}:${date.getMinutes()}`;
+const d = `${days[date.getDay()]}, ${date.getDate()} ${months[date.getMonth()]}, ${date.getFullYear()}`;
+
+
 const Index = props => {
     const [location, setLocation] = React.useState(null);
     const [logginState, setLogginState] = React.useState(false);
@@ -108,13 +118,14 @@ const Index = props => {
         }
     }, [])
 
+
     const submitForm = event => {
         event.preventDefault();
         setLogginState(!logginState)
     }
 
     return <div style={styles.outerLayer}>
-        <input style={{ ...styles.logout, display: logginState ? "" : "nonec" }} type="button" value="Sign out" onClick={() => { setLogginState(false) }} />
+        <input style={{ ...styles.logout, display: logginState ? "" : "none" }} type="button" value="Sign out" onClick={() => { setLogginState(false) }} />
         {logginState ?
             <div style={styles.middleLayer}>
                 <div style={styles.innerLayer}>
@@ -122,7 +133,7 @@ const Index = props => {
                         <div style={styles.container}>
                             <div style={styles.topDiv}>
                                 <FlexContainer>
-                                    <TextBlock data={{ bigText: "7:44", secondBiggText: "AM", smallText: "Friday, January 12, 2020" }} />
+                                    <TextBlock data={{ bigText: time, secondBiggText: `${hr > 11 ? "PM" : "AM"}`, smallText: d }} />
                                     <TextBlock data={{ bigText: "Accra", smallText: "Ghana" }} />
                                 </FlexContainer>
                             </div>
