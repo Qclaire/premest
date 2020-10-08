@@ -15,8 +15,8 @@ const styles = {
         backgroundRepeat: "no-repeat",
         alignItems: "center",
         alignContent: "center",
+        position: "relative",
         width: "100vw",
-        margin: "auto"
     },
     innerLayer: {
         border: "solid black 4px",
@@ -28,6 +28,10 @@ const styles = {
         borderRadius: "25px",
         width: "70%",
         margin: "auto",
+        position: "absolute",
+        top: "50%",
+        left: "50%",
+        transform: "translate(-50%, -50%)",
     },
     container: {
         background: "transparent",
@@ -46,14 +50,18 @@ const styles = {
         alignItems: "center",
         position: "absolute",
         width: "100%",
-        bottom: "20px",
+        bottom: "40px",
     },
     btn: {
         borderRadius: "100px",
         background: "rgba(0,0,0, 0.5)",
-        width: "50px",
-        height: "50px",
-        margin: "5px auto"
+        width: "40px",
+        height: "40px",
+        margin: "5px auto",
+        position: "absolute",
+        bottom: "-05%",
+        left: "50%",
+        transform: "translate(-50%, -50%)"
     },
     search: {
         margin: "auto auto",
@@ -65,11 +73,34 @@ const styles = {
     },
     input: {
         width: "100%",
+    },
+    label: {
+        display: "block",
+        margin: "5px",
+    },
+    button: {
+        background: "",
+        // width: "50px",
+        // height: "20px",
+        // padding: "20px 40px"
+        margin: "5px"
+    },
+    form: {
+        position: "absolute",
+        top: "50%",
+        left: "50%",
+        transform: "translate(-50%, -50%)"
+    },
+    logout: {
+        position: "absolute",
+        bottom: "3%",
+        right: "3%"
     }
 
 }
 const Index = props => {
     const [location, setLocation] = React.useState(null);
+    const [logginState, setLogginState] = React.useState(false);
 
     React.useEffect(() => {
         if (window.navigator.geolocation) {
@@ -77,30 +108,55 @@ const Index = props => {
         }
     }, [])
 
-    return <div style={styles.outerLayer}>
-        <div style={styles.middleLayer}>
-            <div style={styles.innerLayer}>
-                <div style={styles.midLine}>
-                    <div style={styles.container}>
-                        <div style={styles.topDiv}>
-                            <FlexContainer>
-                                <TextBlock data={{ bigText: "7:44", secondBiggText: "AM", smallText: "Friday, January 12, 2020" }} />
-                                <TextBlock data={{ bigText: "Accra", smallText: "Ghana" }} />
-                            </FlexContainer>
-                        </div>
-                        <div style={styles.search}><input placeholder="Search for a place" type="text" style={styles.input} /></div>
-                        <div style={styles.bottomDiv}>
-                            <Figure top={"27C"} bottom={"Temperature"} />
-                            <Figure top={"50%"} bottom={"Humidity"} />
-                            <Figure top={"20"} bottom={"Humidity"} />
+    const submitForm = event => {
+        event.preventDefault();
+        setLogginState(!logginState)
+    }
 
+    return <div style={styles.outerLayer}>
+        <input style={{ ...styles.logout, display: logginState ? "" : "nonec" }} type="button" value="Sign out" onClick={() => { setLogginState(false) }} />
+        {logginState ?
+            <div style={styles.middleLayer}>
+                <div style={styles.innerLayer}>
+                    <div style={styles.midLine}>
+                        <div style={styles.container}>
+                            <div style={styles.topDiv}>
+                                <FlexContainer>
+                                    <TextBlock data={{ bigText: "7:44", secondBiggText: "AM", smallText: "Friday, January 12, 2020" }} />
+                                    <TextBlock data={{ bigText: "Accra", smallText: "Ghana" }} />
+                                </FlexContainer>
+                            </div>
+                            <div style={styles.search}><input placeholder="Search for a place" type="text" style={styles.input} /></div>
+                            <div style={styles.bottomDiv}>
+                                <Figure top={"27C"} bottom={"Temperature"} />
+                                <Figure top={"50%"} bottom={"Humidity"} />
+                                <Figure top={"20"} bottom={"Humidity"} />
+
+                            </div>
                         </div>
+
+                        <div style={styles.btn}></div>
                     </div>
-                    <div style={styles.btn}></div>
                 </div>
             </div>
-        </div>
+            :
+            <form onSubmit={submitForm} style={styles.form}>
+                <div>
+                    <label style={styles.label}>Username: </label>
+                    <input type="text" />
+                </div>
+                <div>
+                    <label style={styles.label}>Password: </label>
+                    <input type="password" />
+                </div>
+                <div>
+                    <input style={styles.button} type="submit" value="Login" />
+                </div>
 
+                Click the button to see next page
+
+            </form>
+        }
     </div>
 }
 

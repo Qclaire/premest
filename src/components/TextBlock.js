@@ -6,7 +6,7 @@ const styles = {
         padding: "20px",
     },
     bigText: {
-        fontSize: "40px",
+        fontSize: "30px",
         fontWeight: "200",
     },
     secondBiggText: {
