@@ -2,6 +2,7 @@ import React from 'react'
 import FlexContainer from './FlexContainer'
 import TextBlock from './TextBlock'
 import bg from "./bg1.jpg"
+import bg1 from "./bg.jpg"
 import Figure from './Figures'
 
 
@@ -10,7 +11,7 @@ const styles = {
         background: "transparent",
         height: "100vh",
         overflow: "hidden",
-        backgroundImage: `url(${bg})`,
+        backgroundImage: `url(${bg1})`,
         backgroundSize: "100% 100%",
         backgroundRepeat: "no-repeat",
         alignItems: "center",
@@ -24,6 +25,7 @@ const styles = {
         minHeight: "50vh",
     },
     middleLayer: {
+        boxShadow: "2px 2px 030px -15px lightgrey",
         border: "solid #545454 15px",
         borderRadius: "25px",
         maxWidth: "700px",
@@ -36,6 +38,8 @@ const styles = {
     },
     container: {
         background: "transparent",
+        backgroundSize: "100% 100%",
+        backgroundImage: `url(${bg})`,
         height: "70vh",
         position: "relative",
         margin: "auto"
@@ -100,11 +104,11 @@ const styles = {
 
 }
 
-const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
-const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 const date = new Date();
 const hr = date.getHours();
-const time = `${hr > 12 ? hr - 12 : hr}:${date.getMinutes()}`;
+const time = `${hr > 12 ? hr - 12 : hr < 10 ? `0${hr}` : hr}:${date.getMinutes()}`;
 const d = `${days[date.getDay()]}, ${date.getDate()} ${months[date.getMonth()]}, ${date.getFullYear()}`;
 
 
@@ -113,6 +117,7 @@ const Index = props => {
     const [logginState, setLogginState] = React.useState(false);
 
     React.useEffect(() => {
+        //CatchEvent();
         if (window.navigator.geolocation) {
             //setLocation(window.navigator.geolocation.getCurrentPosition(obj => obj.coords, console.log))
         }
