@@ -10,10 +10,10 @@ const styles = {
         background: "transparent",
         backgroundSize: "100% 100%",
         backgroundImage: `url(${bg})`,
-        height: "100.5%",
+        height: "100%",
         position: "relative",
         margin: "auto",
-        borderRadius: "10px"
+        borderRadius: "5px"
     },
     topDiv: {
 
@@ -28,47 +28,7 @@ const styles = {
         width: "100%",
         bottom: "40px",
     },
-    btn: {
-        borderRadius: "100px",
-        background: "rgba(0,0,0, 0.5)",
-        width: "40px",
-        height: "40px",
-        margin: "5px auto",
-        position: "absolute",
-        bottom: "-05%",
-        left: "50%",
-        transform: "translate(-50%, -50%)"
-    },
-    search: {
-        margin: "auto auto",
-        position: "absolute",
-        bottom: "20%",
-        right: "35%",
-        width: "30%",
-        height: "20%"
-    },
-    input: {
-        width: "100%",
-    },
-    label: {
-        display: "block",
-        margin: "5px",
-    },
-    button: {
-        background: "",
-        margin: "5px"
-    },
-    form: {
-        position: "absolute",
-        top: "50%",
-        left: "50%",
-        transform: "translate(-50%, -50%)"
-    },
-    logout: {
-        position: "absolute",
-        bottom: "3%",
-        right: "3%"
-    }
+
 
 }
 
@@ -98,7 +58,6 @@ const Home = props => {
                 <TextBlock data={{ bigText: "Accra", smallText: "Ghana" }} />
             </FlexContainer>
         </div>
-        <div style={styles.search}><input placeholder="Search for a place" type="text" style={styles.input} /></div>
         <div style={styles.bottomDiv}>
             <Figure top={"27C"} bottom={"Temperature"} />
             <Figure top={"50%"} bottom={"Humidity"} />

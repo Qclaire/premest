@@ -10,13 +10,14 @@ const styles = {
         borderRadius: "10px",
         minHeight: "50vh",
         maxHeight: "100%",
-        height: "40vh"
+        height: "98.2%"
     },
     middleLayer: {
         boxShadow: "2px 2px 030px -15px lightgrey",
         border: "solid darkgrey 15px",
         borderRadius: "25px",
         maxWidth: "900px",
+        height: "80vh",
         maxHeight: "550px",
         width: "70%",
         margin: "auto",

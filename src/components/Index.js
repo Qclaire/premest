@@ -2,6 +2,7 @@ import React from 'react'
 import Bezels from './Bezels'
 import bg1 from "./bg.jpg"
 import Home from './Home'
+import Search from './Search'
 import SignIn from './SignIn'
 
 
@@ -47,7 +48,7 @@ const Index = props => {
 
     return <>
         <Bezels>
-            <Home />
+            <Search />
         </Bezels>
     </>
 }
