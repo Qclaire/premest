@@ -39,7 +39,7 @@ const Home = props => {
 
     React.useEffect(() => {
         fetch(URL).then(resp => resp.json()).then(data => {
-            console.log(data)
+
             const current = data["current"];
             const location = data["location"];
             if (current)
@@ -47,8 +47,6 @@ const Home = props => {
                     humidity: current["humidiy"],
                     temperature: current["temperature"],
                     country: location["country"],
-
-
                 })
 
 
@@ -71,13 +69,12 @@ const Home = props => {
         <div style={styles.topDiv}>
             <FlexContainer>
                 <TextBlock data={{ bigText: time, secondBiggText: `${hr > 11 ? "PM" : "AM"}`, smallText: d }} />
-                <TextBlock data={{ bigText: "Accra", smallText: "Ghana" }} />
+                <TextBlock data={{ bigText: "Accra", smallText: data?.country }} />
             </FlexContainer>
         </div>
         <div style={styles.bottomDiv}>
-            <Figure top={"27C"} bottom={"Temperature"} />
-            <Figure top={"50%"} bottom={"Humidity"} />
-            <Figure top={"20"} bottom={"Humidity"} />
+            <Figure top={`${data?.temperature || 30}C`} bottom={"Temperature"} />
+            <Figure top={`${data?.humidity || 50}%`} bottom={"Humidity"} />
 
         </div>
     </div>
