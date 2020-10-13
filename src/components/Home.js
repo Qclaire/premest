@@ -2,14 +2,12 @@ import React from 'react'
 import Figure from './Figures'
 import FlexContainer from './FlexContainer'
 import TextBlock from './TextBlock'
-import bg from "./bg1.jpg"
+
 
 const styles = {
 
     container: {
         background: "transparent",
-        backgroundSize: "100% 100%",
-        backgroundImage: `url(${bg})`,
         height: "100%",
         position: "relative",
         margin: "auto",
@@ -33,10 +31,28 @@ const styles = {
 }
 
 const Home = props => {
-    const [location, setLocation] = React.useState(null)
+    const [data, setData] = React.useState(null)
+
+    const API_KEY = "80321912fccba716f04685bfbbc1486c";
+    const endPoint = "80321912fccba716f04685bfbbc1486c";
+    const URL = `http://api.weatherstack.com/current?access_key=${API_KEY}&query=fetch:ip`
 
     React.useEffect(() => {
-        fetch("http://example.com/movies.json").then(resp => console.log(resp))
+        fetch(URL).then(resp => resp.json()).then(data => {
+            console.log(data)
+            const current = data["current"];
+            const location = data["location"];
+            if (current)
+                setData({
+                    humidity: current["humidiy"],
+                    temperature: current["temperature"],
+                    country: location["country"],
+
+
+                })
+
+
+        })
     }, [])
 
 

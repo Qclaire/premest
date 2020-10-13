@@ -1,4 +1,6 @@
 import React from 'react'
+import bg from "./bg1.jpg"
+
 
 
 
@@ -17,6 +19,8 @@ const styles = {
         border: "solid darkgrey 15px",
         borderRadius: "25px",
         maxWidth: "900px",
+        backgroundSize: "100% 100%",
+        backgroundImage: `url(${bg})`,
         height: "80vh",
         maxHeight: "550px",
         width: "70%",

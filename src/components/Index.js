@@ -1,54 +1,50 @@
 import React from 'react'
 import Bezels from './Bezels'
-import bg1 from "./bg.jpg"
+import FlexContainer from './FlexContainer'
+import History from './HIstory'
 import Home from './Home'
 import Search from './Search'
 import SignIn from './SignIn'
 
 
 const styles = {
-    outerLayer: {
-        background: "transparent",
-        height: "100vh",
-        overflow: "hidden",
-        backgroundImage: `url(${bg1})`,
-        backgroundSize: "100% 100%",
-        backgroundRepeat: "no-repeat",
-        alignItems: "center",
-        alignContent: "center",
-        position: "relative",
-        width: "100vw",
-    },
-    innerLayer: {
-        border: "solid black 4px",
-        borderRadius: "10px",
-        minHeight: "50vh",
-    },
-    middleLayer: {
-        boxShadow: "2px 2px 030px -15px lightgrey",
-        border: "solid #000 15px",
-        borderRadius: "25px",
-        maxWidth: "700px",
-        width: "70%",
-        margin: "auto",
-        position: "absolute",
-        top: "50%",
-        left: "50%",
-        transform: "translate(-50%, -50%)",
-    },
+    controls: {
+        padding: "0 15px", bottom: "12px", margin: "0 auto",
+        position: "relative", width: "100%", transform: "translate(-50%, 0)",
+        left: "50%"
+    }
 }
-
-
-
 const Index = props => {
-
+    const [selected, setSelected] = React.useState(0)
     React.useEffect(() => {
 
     }, [])
 
+    const SelectedView = () => {
+        switch (selected) {
+            case 1:
+                return <Search />
+
+            case 2:
+                return <History />
+            default:
+                return <Home />
+        }
+    }
+
     return <>
         <Bezels>
-            <Search />
+            <div style={{ position: "relative", height: "90%", width: "90%", alignItems: "center", WebkitAlignContent: "center", transform: "translate(-50%, 0)", left: "50%" }}>
+                {SelectedView()}
+                <div style={styles.controls}>
+                    <FlexContainer>
+                        <div onClick={() => { setSelected(2) }}>History</div>
+                        <div onClick={() => { setSelected(0) }} style={{ height: "30px", width: "30px", borderRadius: "100px", background: "rgba(0,0,0,.7)" }}></div>
+                        <div onClick={() => { setSelected(1) }}>Search</div>
+                    </FlexContainer>
+                </div>
+            </div>
+
         </Bezels>
     </>
 }
